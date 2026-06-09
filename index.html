@@ -494,6 +494,7 @@ function init() {
     document.getElementById('app').style.display = 'flex';
     populateOwnerDrops();
     renderAll();
+    setSyncStatus('synced');
   }, (error) => {
     setSyncStatus('error');
     document.getElementById('loading-screen').querySelector('p').textContent = 'Connection failed. Check your internet connection.';
