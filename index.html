@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Major Festival Prios</title>
+<title>Racing Prep Tool</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -238,7 +238,7 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
   <div class="topbar">
     <div class="topbar-inner">
       <div class="event-title-wrap">
-        <div class="event-title-eye">Major Festival Planning</div>
+        <div class="event-title-eye">Pre-Festival Briefing</div>
         <input class="event-title-input" id="event-title-input" placeholder="Event name..." oninput="onTitleChange()" />
         <div class="event-meta-row">
           <div class="event-meta-field">
@@ -366,7 +366,7 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
     </div>
     <div class="modal-btns">
       <button class="mbtn" onclick="closeModal('modal-new')">Cancel</button>
-      <button class="mbtn primary" onclick="createEvent()">Create event</button>
+      <button class="mbtn primary" onclick="newEvent()">Create event</button>
     </div>
   </div>
 </div>
@@ -743,7 +743,7 @@ window.openNewEventModal = function() {
   setTimeout(()=>document.getElementById('new-event-name').focus(),100);
 };
 
-window.createEvent = function() {
+window.newEvent = function() {
   const name = document.getElementById('new-event-name').value.trim();
   if (!name) { document.getElementById('new-event-name').focus(); return; }
   const date = document.getElementById('new-event-date').value;
@@ -880,7 +880,7 @@ window.scrollToEl = function(id) { const el=document.getElementById(id); if(el) 
 });
 document.getElementById('action-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addAction(); });
 document.getElementById('risk-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addRisk(); });
-document.getElementById('new-event-name').addEventListener('keydown',e=>{ if(e.key==='Enter') createEvent(); });
+document.getElementById('new-event-name').addEventListener('keydown',e=>{ if(e.key==='Enter') newEvent(); });
 document.getElementById('rename-input').addEventListener('keydown',e=>{ if(e.key==='Enter') confirmRename(); });
 document.getElementById('new-person-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addPerson(); });
 
