@@ -8,17 +8,9 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #E4E0D6;
-  --cream: #EDEAE2;
-  --card: #EFECE4;
-  --white: #F5F2EB;
-  --ink: #0F0F0D;
-  --ink-mid: #2E2E2A;
-  --ink-light: #6A6A62;
-  --rule: #B8B4AA;
-  --gold: #9A7A28;
-  --gold-l: #EDE0BE;
-  --gold-r: #B8963A;
+  --bg: #E4E0D6; --cream: #EDEAE2; --card: #EFECE4; --white: #F5F2EB;
+  --ink: #0F0F0D; --ink-mid: #2E2E2A; --ink-light: #6A6A62; --rule: #B8B4AA;
+  --gold: #9A7A28; --gold-l: #EDE0BE; --gold-r: #B8963A;
   --purple: #2E2580; --purple-bg: #DDDCF5;
   --teal: #0A5740; --teal-bg: #C8EEE2;
   --blue: #0E4A85; --blue-bg: #CCE0F5;
@@ -29,435 +21,178 @@
 }
 body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
 
-/* ── SIDEBAR ── */
 .layout { display: flex; min-height: 100vh; }
-.sidebar {
-  width: 240px; flex-shrink: 0;
-  background: var(--ink);
-  display: flex; flex-direction: column;
-  position: sticky; top: 0; height: 100vh; overflow-y: auto;
-}
-.sidebar-logo {
-  padding: 1.5rem 1.25rem 1rem;
-  border-bottom: 1px solid #2A2A28;
-}
-.sidebar-logo-eye {
-  font-family: Arial,sans-serif; font-size: 9px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold-r); margin-bottom: 5px;
-}
-.sidebar-logo-title {
-  font-size: 18px; font-weight: 700; color: #F5F2EB; line-height: 1.1;
-}
+.sidebar { width: 240px; flex-shrink: 0; background: var(--ink); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.sidebar-logo { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid #2A2A28; }
+.sidebar-logo-eye { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-r); margin-bottom: 5px; }
+.sidebar-logo-title { font-size: 18px; font-weight: 700; color: #F5F2EB; line-height: 1.1; }
 .sidebar-logo-title span { color: var(--gold-r); }
-
-.sidebar-section-label {
-  font-family: Arial,sans-serif; font-size: 9px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: #4A4A44; padding: 1rem 1.25rem 0.4rem;
-}
+.sidebar-section-label { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #4A4A44; padding: 1rem 1.25rem 0.4rem; }
 .event-list { flex: 1; padding: 0 0.75rem; }
-.event-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 7px 10px; border-radius: var(--r);
-  cursor: pointer; transition: background 0.12s;
-  margin-bottom: 2px;
-}
+.event-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: var(--r); cursor: pointer; transition: background 0.12s; margin-bottom: 2px; }
 .event-item:hover { background: #1E1E1C; }
 .event-item.active { background: #2A2A28; }
 .event-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-r); flex-shrink: 0; }
-.event-name {
-  font-family: Arial,sans-serif; font-size: 12px;
-  color: #C0C0B8; flex: 1; white-space: nowrap;
-  overflow: hidden; text-overflow: ellipsis;
-}
+.event-name { font-family: Arial,sans-serif; font-size: 12px; color: #C0C0B8; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .event-item.active .event-name { color: #F5F2EB; }
-.event-year {
-  font-family: Arial,sans-serif; font-size: 10px; color: #4A4A44;
-}
+.event-year { font-family: Arial,sans-serif; font-size: 10px; color: #4A4A44; }
 .event-item.active .event-year { color: #8A8A82; }
-.event-actions-btn {
-  font-family: Arial,sans-serif; font-size: 10px; color: #4A4A44;
-  background: none; border: none; cursor: pointer; padding: 2px 4px;
-  border-radius: 4px; flex-shrink: 0;
-}
+.event-actions-btn { font-family: Arial,sans-serif; font-size: 10px; color: #4A4A44; background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 4px; flex-shrink: 0; }
 .event-item:hover .event-actions-btn { color: #8A8A82; }
 .event-actions-btn:hover { color: var(--gold-r) !important; }
-
-.sidebar-new-btn {
-  margin: 0.75rem; padding: 8px 12px;
-  background: #1E1E1C; border: 1px solid #3A3A36;
-  border-radius: var(--r); color: #A0A09A;
-  font-family: Arial,sans-serif; font-size: 12px;
-  cursor: pointer; transition: all 0.15s; text-align: center;
-}
+.sidebar-new-btn { margin: 0.75rem; padding: 8px 12px; background: #1E1E1C; border: 1px solid #3A3A36; border-radius: var(--r); color: #A0A09A; font-family: Arial,sans-serif; font-size: 12px; cursor: pointer; transition: all 0.15s; text-align: center; }
 .sidebar-new-btn:hover { border-color: var(--gold-r); color: var(--gold-r); }
-
-.sidebar-actions-badge {
-  margin: 0 0.75rem 0.75rem;
-  padding: 8px 10px;
-  background: #1E1E1C; border: 1px solid #2A2A28;
-  border-radius: var(--r); cursor: pointer; transition: all 0.15s;
-}
+.sidebar-actions-badge { margin: 0 0.75rem 0.75rem; padding: 8px 10px; background: #1E1E1C; border: 1px solid #2A2A28; border-radius: var(--r); cursor: pointer; transition: all 0.15s; }
 .sidebar-actions-badge:hover { border-color: #3A3A36; }
 .sab-label { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #4A4A44; }
 .sab-counts { display: flex; gap: 8px; margin-top: 4px; }
 .sab-open { font-family: Arial,sans-serif; font-size: 12px; color: #E09090; }
 .sab-closed { font-family: Arial,sans-serif; font-size: 12px; color: #80A870; }
 
-/* ── MAIN ── */
-.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+/* sync indicator */
+.sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #4A4A44; display: inline-block; margin-left: 6px; vertical-align: middle; transition: background 0.3s; }
+.sync-dot.syncing { background: var(--gold-r); animation: pulse 1s infinite; }
+.sync-dot.synced { background: #80A870; }
+.sync-dot.error { background: var(--red); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-.topbar {
-  background: var(--ink); padding: 0;
-  border-bottom: 3px solid var(--gold-r);
-}
-.topbar-inner {
-  padding: 1.75rem 2.5rem 1.25rem;
-  display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-}
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.topbar { background: var(--ink); padding: 0; border-bottom: 3px solid var(--gold-r); }
+.topbar-inner { padding: 1.75rem 2.5rem 1.25rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .event-title-wrap { flex: 1; }
-.event-title-eye {
-  font-family: Arial,sans-serif; font-size: 9px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold-r); margin-bottom: 6px;
-}
-.event-title-input {
-  font-family: 'Georgia','Times New Roman',serif;
-  font-size: 36px; font-weight: 700;
-  color: #F5F2EB; background: transparent;
-  border: none; outline: none; width: 100%;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s;
-  letter-spacing: -0.3px;
-}
+.event-title-eye { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-r); margin-bottom: 6px; }
+.event-title-input { font-family: 'Georgia','Times New Roman',serif; font-size: 36px; font-weight: 700; color: #F5F2EB; background: transparent; border: none; outline: none; width: 100%; border-bottom: 1px solid transparent; transition: border-color 0.15s; letter-spacing: -0.3px; }
 .event-title-input::placeholder { color: #3A3A36; }
 .event-title-input:focus { border-bottom-color: var(--gold-r); }
-.event-title-input span.gold { color: var(--gold-r); }
-.event-meta-row {
-  display: flex; gap: 1.5rem; margin-top: 8px; flex-wrap: wrap;
-}
-.event-meta-field {
-  display: flex; align-items: center; gap: 6px;
-}
-.event-meta-label {
-  font-family: Arial,sans-serif; font-size: 10px;
-  letter-spacing: 0.12em; text-transform: uppercase; color: #4A4A44;
-}
-.event-meta-input {
-  font-family: Arial,sans-serif; font-size: 12px;
-  color: #A0A09A; background: transparent;
-  border: none; border-bottom: 1px solid #2A2A28;
-  outline: none; padding: 2px 0; transition: border-color 0.15s;
-  width: 130px;
-}
+.event-meta-row { display: flex; gap: 1.5rem; margin-top: 8px; flex-wrap: wrap; }
+.event-meta-field { display: flex; align-items: center; gap: 6px; }
+.event-meta-label { font-family: Arial,sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4A4A44; }
+.event-meta-input { font-family: Arial,sans-serif; font-size: 12px; color: #A0A09A; background: transparent; border: none; border-bottom: 1px solid #2A2A28; outline: none; padding: 2px 0; transition: border-color 0.15s; width: 130px; }
 .event-meta-input:focus { border-bottom-color: var(--gold-r); color: #F5F2EB; }
-.topbar-actions { display: flex; gap: 8px; align-self: flex-start; margin-top: 4px; }
-.tb-btn {
-  font-family: Arial,sans-serif; font-size: 11px;
-  padding: 6px 14px; border-radius: var(--r);
-  border: 1px solid #3A3A36; background: transparent;
-  color: #A0A09A; cursor: pointer; transition: all 0.15s; white-space: nowrap;
-}
+.topbar-actions { display: flex; gap: 8px; align-self: flex-start; margin-top: 4px; align-items: center; }
+.tb-btn { font-family: Arial,sans-serif; font-size: 11px; padding: 6px 14px; border-radius: var(--r); border: 1px solid #3A3A36; background: transparent; color: #A0A09A; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
 .tb-btn:hover { border-color: #8A8A82; color: #F5F2EB; }
 .tb-btn.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 700; }
 .tb-btn.gold:hover { background: var(--gold-r); border-color: var(--gold-r); }
 .tb-btn.pdf { border-color: var(--gold-r); color: var(--gold-r); }
 .tb-btn.pdf:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
 
-/* ── CONTENT ── */
 .content { padding: 2rem 2.5rem; flex: 1; }
-
-.stats-strip {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1px; background: var(--rule);
-  border: 1px solid var(--rule); border-radius: var(--rl);
-  overflow: hidden; margin-bottom: 2rem;
-}
-.stat-cell {
-  background: var(--white); padding: 0.9rem 1rem;
-  cursor: pointer; transition: background 0.12s;
-}
+.stats-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--rl); overflow: hidden; margin-bottom: 2rem; }
+.stat-cell { background: var(--white); padding: 0.9rem 1rem; cursor: pointer; transition: background 0.12s; }
 .stat-cell:hover { background: var(--cream); }
-.stat-cell.ct { background: var(--purple-bg); }
-.stat-cell.co { background: var(--teal-bg); }
-.stat-cell.cte { background: var(--blue-bg); }
-.stat-cell.cp { background: var(--amber-bg); }
+.stat-cell.ct { background: var(--purple-bg); } .stat-cell.co { background: var(--teal-bg); }
+.stat-cell.cte { background: var(--blue-bg); } .stat-cell.cp { background: var(--amber-bg); }
 .stat-lbl { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 3px; }
 .stat-name { font-size: 14px; font-weight: 700; color: var(--ink); }
 .stat-count { font-family: Arial,sans-serif; font-size: 11px; color: var(--ink-light); margin-top: 2px; }
-
 .prio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-bottom: 2rem; }
-
-.team-sec {}
-.team-hdr {
-  display: flex; align-items: center; gap: 8px;
-  padding-bottom: 8px; border-bottom: 2px solid var(--ink);
-  margin-bottom: 0.75rem;
-}
+.team-hdr { display: flex; align-items: center; gap: 8px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); margin-bottom: 0.75rem; }
 .tdot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.dt { background: var(--purple); } .do { background: var(--teal); }
-.dte { background: var(--blue); } .dp { background: var(--amber); }
-.tname {
-  font-family: 'Arial Narrow',Arial,sans-serif;
-  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink); flex: 1;
-}
-.add-btn {
-  font-family: Arial,sans-serif; font-size: 10px;
-  padding: 3px 9px; border: 1px solid var(--rule);
-  border-radius: var(--r); background: var(--white);
-  color: var(--ink-mid); cursor: pointer; transition: all 0.13s;
-}
+.dt { background: var(--purple); } .do { background: var(--teal); } .dte { background: var(--blue); } .dp { background: var(--amber); }
+.tname { font-family: 'Arial Narrow',Arial,sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ink); flex: 1; }
+.add-btn { font-family: Arial,sans-serif; font-size: 10px; padding: 3px 9px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--white); color: var(--ink-mid); cursor: pointer; transition: all 0.13s; }
 .add-btn:hover { border-color: var(--gold); color: var(--gold); }
-
 .plist { list-style: none; display: flex; flex-direction: column; gap: 7px; min-height: 32px; }
-.pitem {
-  background: var(--white); border: 1px solid var(--rule);
-  border-radius: var(--r); padding: 9px 11px;
-}
+.pitem { background: var(--white); border: 1px solid var(--rule); border-radius: var(--r); padding: 9px 11px; }
 .pitem:hover .ictrl { opacity: 1; }
 .itop { display: flex; align-items: flex-start; gap: 7px; }
 .inum { font-family: Arial,sans-serif; font-size: 10px; color: var(--ink-light); min-width: 14px; margin-top: 2px; flex-shrink: 0; }
 .ibody { flex: 1; }
-.ititle {
-  font-size: 13px; font-weight: 700; color: var(--ink);
-  line-height: 1.4; cursor: text; outline: none; border-radius: 3px;
-}
+.ititle { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; cursor: text; outline: none; border-radius: 3px; }
 .ititle:focus { background: var(--cream); padding: 1px 4px; margin: -1px -4px; }
-.inote {
-  font-family: Arial,sans-serif; font-size: 11px; color: var(--ink-mid);
-  margin-top: 3px; line-height: 1.5; cursor: text; outline: none;
-  border-radius: 3px; font-style: italic;
-}
+.inote { font-family: Arial,sans-serif; font-size: 11px; color: var(--ink-mid); margin-top: 3px; line-height: 1.5; cursor: text; outline: none; border-radius: 3px; font-style: italic; }
 .inote:empty::before { content: attr(data-ph); color: var(--ink-light); font-style: italic; }
 .inote:focus { background: var(--cream); padding: 1px 4px; margin: -1px -4px; }
 .ifoot { display: flex; align-items: center; gap: 7px; margin-top: 7px; flex-wrap: wrap; }
-.badge {
-  font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.07em;
-  text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1px solid; cursor: pointer;
-}
+.badge { font-family: Arial,sans-serif; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; border: 1px solid; cursor: pointer; }
 .bh { background: var(--red-bg); color: var(--red); border-color: #E09595; }
 .bm { background: var(--amber-bg); color: var(--amber); border-color: #C88A30; }
 .bl { background: var(--green-bg); color: var(--green); border-color: #80B859; }
-.obadge {
-  font-family: Arial,sans-serif; font-size: 9px; padding: 2px 7px;
-  border-radius: 20px; background: var(--gold-l); color: var(--amber);
-  border: 1px solid var(--gold-r); cursor: pointer;
-}
+.obadge { font-family: Arial,sans-serif; font-size: 9px; padding: 2px 7px; border-radius: 20px; background: var(--gold-l); color: var(--amber); border: 1px solid var(--gold-r); cursor: pointer; }
 .ictrl { display: flex; gap: 3px; opacity: 0; transition: opacity 0.13s; margin-left: auto; }
-.cbtn {
-  font-family: Arial,sans-serif; font-size: 10px; padding: 2px 6px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: none; color: var(--ink-light); cursor: pointer;
-}
+.cbtn { font-family: Arial,sans-serif; font-size: 10px; padding: 2px 6px; border: 1px solid var(--rule); border-radius: var(--r); background: none; color: var(--ink-light); cursor: pointer; }
 .cbtn:hover { color: var(--red); border-color: var(--red); }
-
-.aform {
-  display: none; gap: 5px; margin-top: 7px;
-  padding: 9px; background: var(--cream);
-  border-radius: var(--r); border: 1px dashed var(--rule);
-}
+.aform { display: none; gap: 5px; margin-top: 7px; padding: 9px; background: var(--cream); border-radius: var(--r); border: 1px dashed var(--rule); }
 .aform.open { display: flex; flex-wrap: wrap; }
-.aform input, .aform select, .aform textarea {
-  font-family: Arial,sans-serif; font-size: 12px; padding: 6px 9px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: var(--white); color: var(--ink); outline: none;
-}
+.aform input, .aform select, .aform textarea { font-family: Arial,sans-serif; font-size: 12px; padding: 6px 9px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--white); color: var(--ink); outline: none; }
 .aform input:focus, .aform textarea:focus { border-color: var(--gold); }
 .aform .ft { flex: 1; min-width: 150px; }
 .aform textarea { width: 100%; min-height: 44px; resize: vertical; }
 .fbtns { display: flex; gap: 5px; width: 100%; }
-.fsave {
-  font-family: Arial,sans-serif; font-size: 11px; padding: 5px 12px;
-  border: none; border-radius: var(--r); background: var(--ink); color: var(--white); cursor: pointer;
-}
+.fsave { font-family: Arial,sans-serif; font-size: 11px; padding: 5px 12px; border: none; border-radius: var(--r); background: var(--ink); color: var(--white); cursor: pointer; }
 .fsave:hover { background: var(--gold); }
-.fcancel {
-  font-family: Arial,sans-serif; font-size: 11px; padding: 5px 12px;
-  border: 1px solid var(--rule); border-radius: var(--r); background: none; color: var(--ink-mid); cursor: pointer;
-}
-
-/* ── ACTIONS PANEL ── */
+.fcancel { font-family: Arial,sans-serif; font-size: 11px; padding: 5px 12px; border: 1px solid var(--rule); border-radius: var(--r); background: none; color: var(--ink-mid); cursor: pointer; }
 .sec-rule { border: none; border-top: 1px solid var(--rule); margin: 0 0 1.75rem; }
-.sec-hdr {
-  display: flex; align-items: center; gap: 10px;
-  padding-bottom: 9px; border-bottom: 2px solid var(--gold);
-  margin-bottom: 1.25rem;
-}
-.sec-hdr-label {
-  font-family: 'Arial Narrow',Arial,sans-serif;
-  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink); flex: 1;
-}
-
+.sec-hdr { display: flex; align-items: center; gap: 10px; padding-bottom: 9px; border-bottom: 2px solid var(--gold); margin-bottom: 1.25rem; }
+.sec-hdr-label { font-family: 'Arial Narrow',Arial,sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ink); flex: 1; }
 .actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-
-.act-card {
-  background: var(--card); border: 1px solid var(--rule);
-  border-radius: var(--rl); overflow: hidden;
-}
-.act-card-hdr {
-  display: flex; align-items: center; gap: 7px;
-  padding: 9px 13px; border-bottom: 1px solid var(--rule);
-  background: var(--cream);
-}
+.act-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--rl); overflow: hidden; }
+.act-card-hdr { display: flex; align-items: center; gap: 7px; padding: 9px 13px; border-bottom: 1px solid var(--rule); background: var(--cream); }
 .act-card-icon { font-size: 13px; color: var(--gold); }
-.act-card-title {
-  font-family: Arial,sans-serif; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-mid); flex: 1;
-}
+.act-card-title { font-family: Arial,sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-mid); flex: 1; }
 .act-card-body { padding: 11px 13px; }
-.note-area {
-  width: 100%; min-height: 85px; font-family: Arial,sans-serif;
-  font-size: 12px; color: var(--ink); line-height: 1.6;
-  border: none; outline: none; resize: none; background: transparent;
-}
+.note-area { width: 100%; min-height: 85px; font-family: Arial,sans-serif; font-size: 12px; color: var(--ink); line-height: 1.6; border: none; outline: none; resize: none; background: transparent; }
 .note-area::placeholder { color: var(--ink-light); font-style: italic; }
-
-/* Action items list */
 .ai-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 7px; }
-.ai-item {
-  display: flex; align-items: flex-start; gap: 7px;
-  font-family: Arial,sans-serif; font-size: 12px; line-height: 1.4;
-  padding: 6px 8px; border-radius: var(--r);
-  border-left: 3px solid transparent; transition: background 0.12s;
-}
+.ai-item { display: flex; align-items: flex-start; gap: 7px; font-family: Arial,sans-serif; font-size: 12px; line-height: 1.4; padding: 6px 8px; border-radius: var(--r); border-left: 3px solid transparent; }
 .ai-item.open { background: var(--cream); border-left-color: var(--gold-r); }
 .ai-item.closed { background: var(--green-bg); border-left-color: #80B859; opacity: 0.75; }
 .ai-item.carried { background: #EDE0BE; border-left-color: var(--gold); }
-.ai-owner {
-  font-size: 10px; background: var(--gold-l); color: var(--amber);
-  border: 1px solid var(--gold-r); border-radius: 20px;
-  padding: 1px 7px; white-space: nowrap; margin-top: 1px; flex-shrink: 0;
-}
+.ai-owner { font-size: 10px; background: var(--gold-l); color: var(--amber); border: 1px solid var(--gold-r); border-radius: 20px; padding: 1px 7px; white-space: nowrap; margin-top: 1px; flex-shrink: 0; }
 .ai-text { flex: 1; }
 .ai-text.done { text-decoration: line-through; color: var(--ink-light); }
-.ai-carried-tag {
-  font-size: 9px; background: #EDE0BE; color: var(--amber);
-  border: 1px solid var(--gold-r); border-radius: 20px;
-  padding: 1px 7px; white-space: nowrap; flex-shrink: 0;
-}
+.ai-carried-tag { font-size: 9px; background: #EDE0BE; color: var(--amber); border: 1px solid var(--gold-r); border-radius: 20px; padding: 1px 7px; white-space: nowrap; flex-shrink: 0; }
 .ai-ctrl { display: flex; gap: 3px; flex-shrink: 0; }
-.ai-btn {
-  font-family: Arial,sans-serif; font-size: 10px; padding: 1px 6px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: none; color: var(--ink-light); cursor: pointer;
-}
+.ai-btn { font-family: Arial,sans-serif; font-size: 10px; padding: 1px 6px; border: 1px solid var(--rule); border-radius: var(--r); background: none; color: var(--ink-light); cursor: pointer; }
 .ai-btn:hover { background: var(--cream); }
 .ai-btn.done-btn:hover { color: var(--green); border-color: var(--green); }
 .ai-btn.del-btn:hover { color: var(--red); border-color: var(--red); }
-.ai-btn.carry-btn:hover { color: var(--gold); border-color: var(--gold); }
-
 .ai-add-row { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
-.ai-add-row input, .ai-add-row select {
-  font-family: Arial,sans-serif; font-size: 11px; padding: 5px 8px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: var(--white); color: var(--ink); outline: none;
-}
+.ai-add-row input, .ai-add-row select { font-family: Arial,sans-serif; font-size: 11px; padding: 5px 8px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--white); color: var(--ink); outline: none; }
 .ai-add-row input:focus { border-color: var(--gold); }
 .ai-add-row input.ai-inp { flex: 1; min-width: 120px; }
-.ai-add-row button {
-  font-family: Arial,sans-serif; font-size: 11px; padding: 5px 10px;
-  border: 1px solid var(--rule); border-radius: var(--r);
-  background: var(--white); color: var(--ink-mid); cursor: pointer;
-}
+.ai-add-row button { font-family: Arial,sans-serif; font-size: 11px; padding: 5px 10px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--white); color: var(--ink-mid); cursor: pointer; }
 .ai-add-row button:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
-
-/* Risk items */
-.risk-item {
-  display: flex; align-items: flex-start; gap: 7px;
-  font-family: Arial,sans-serif; font-size: 12px; line-height: 1.4;
-  padding: 6px 8px; border-radius: var(--r);
-  background: var(--red-bg); margin-bottom: 5px;
-}
-.risk-tag {
-  font-size: 9px; background: #EAB0B0; color: var(--red);
-  border: 1px solid #D09090; border-radius: 20px;
-  padding: 1px 7px; text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0;
-}
-.risk-del {
-  font-size: 10px; color: var(--ink-light); background: none; border: none;
-  cursor: pointer; padding: 0 3px; opacity: 0; transition: opacity 0.13s; margin-left: auto;
-}
+.risk-item { display: flex; align-items: flex-start; gap: 7px; font-family: Arial,sans-serif; font-size: 12px; line-height: 1.4; padding: 6px 8px; border-radius: var(--r); background: var(--red-bg); margin-bottom: 5px; }
+.risk-tag { font-size: 9px; background: #EAB0B0; color: var(--red); border: 1px solid #D09090; border-radius: 20px; padding: 1px 7px; text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
+.risk-del { font-size: 10px; color: var(--ink-light); background: none; border: none; cursor: pointer; padding: 0 3px; opacity: 0; transition: opacity 0.13s; margin-left: auto; }
 .risk-item:hover .risk-del { opacity: 1; }
 .risk-del:hover { color: var(--red); }
-
-/* ── MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.6); z-index: 200;
-  align-items: center; justify-content: center;
-}
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; align-items: center; justify-content: center; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: var(--white); border-radius: var(--rl);
-  padding: 1.5rem; width: 460px; max-width: 90vw;
-  border: 1px solid var(--rule);
-}
+.modal { background: var(--white); border-radius: var(--rl); padding: 1.5rem; width: 460px; max-width: 90vw; border: 1px solid var(--rule); }
 .modal h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.5rem; }
 .modal p { font-family: Arial,sans-serif; font-size: 13px; color: var(--ink-mid); margin-bottom: 1rem; line-height: 1.5; }
-.modal input, .modal select {
-  width: 100%; font-family: Arial,sans-serif; font-size: 13px;
-  padding: 8px 10px; border: 1px solid var(--rule); border-radius: var(--r);
-  background: var(--cream); color: var(--ink); outline: none; margin-bottom: 10px;
-}
+.modal input, .modal select { width: 100%; font-family: Arial,sans-serif; font-size: 13px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--cream); color: var(--ink); outline: none; margin-bottom: 10px; }
 .modal input:focus { border-color: var(--gold); }
 .modal-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 0.5rem; }
-.mbtn {
-  font-family: Arial,sans-serif; font-size: 12px; padding: 7px 16px;
-  border-radius: var(--r); border: 1px solid var(--rule);
-  background: var(--white); color: var(--ink); cursor: pointer;
-}
+.mbtn { font-family: Arial,sans-serif; font-size: 12px; padding: 7px 16px; border-radius: var(--r); border: 1px solid var(--rule); background: var(--white); color: var(--ink); cursor: pointer; }
 .mbtn:hover { background: var(--cream); }
 .mbtn.primary { background: var(--ink); color: var(--white); border-color: var(--ink); }
 .mbtn.primary:hover { background: var(--gold); border-color: var(--gold); }
-
-/* Carried actions review */
 .carried-list { max-height: 220px; overflow-y: auto; border: 1px solid var(--rule); border-radius: var(--r); margin-bottom: 10px; }
-.carried-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 8px 10px; border-bottom: 1px solid var(--rule); font-family: Arial,sans-serif; font-size: 12px;
-}
+.carried-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--rule); font-family: Arial,sans-serif; font-size: 12px; }
 .carried-row:last-child { border-bottom: none; }
 .carried-row input[type=checkbox] { flex-shrink: 0; cursor: pointer; }
 .carried-row-text { flex: 1; }
 .carried-row-owner { font-size: 10px; color: var(--ink-light); }
-
-/* Footer */
-.page-footer {
-  background: var(--ink); padding: 1rem 2.5rem;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
-}
+.page-footer { background: var(--ink); padding: 1rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
 .footer-left { font-family: Arial,sans-serif; font-size: 11px; color: #4A4A44; }
 .footer-right { display: flex; gap: 7px; }
-.ft-btn {
-  font-family: Arial,sans-serif; font-size: 11px; padding: 6px 14px;
-  border: 1px solid #3A3A36; border-radius: var(--r);
-  background: transparent; color: #A0A09A; cursor: pointer; transition: all 0.13s;
-}
+.ft-btn { font-family: Arial,sans-serif; font-size: 11px; padding: 6px 14px; border: 1px solid #3A3A36; border-radius: var(--r); background: transparent; color: #A0A09A; cursor: pointer; transition: all 0.13s; }
 .ft-btn:hover { border-color: #8A8A82; color: #F5F2EB; }
 .ft-btn.primary { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 700; }
 .ft-btn.primary:hover { background: var(--gold-r); border-color: var(--gold-r); }
-
-.toast {
-  display: none; position: fixed; bottom: 20px; right: 20px;
-  background: var(--ink); color: #F5F2EB;
-  font-family: Arial,sans-serif; font-size: 12px;
-  padding: 9px 16px; border-radius: var(--r);
-  border: 1px solid var(--gold-r); z-index: 300;
-}
-
-/* Empty state */
-.empty-state {
-  padding: 1.5rem; text-align: center;
-  font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light);
-  border: 1px dashed var(--rule); border-radius: var(--r);
-}
-
+.toast { display: none; position: fixed; bottom: 20px; right: 20px; background: var(--ink); color: #F5F2EB; font-family: Arial,sans-serif; font-size: 12px; padding: 9px 16px; border-radius: var(--r); border: 1px solid var(--gold-r); z-index: 300; }
+.empty-state { padding: 1.5rem; text-align: center; font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light); border: 1px dashed var(--rule); border-radius: var(--r); }
+.loading-screen { position: fixed; inset: 0; background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; gap: 16px; }
+.loading-screen p { font-family: Arial,sans-serif; font-size: 13px; color: #6A6A62; letter-spacing: 0.1em; }
+.loading-logo { font-size: 24px; font-weight: 700; color: #F5F2EB; } .loading-logo span { color: var(--gold-r); }
+.spinner { width: 28px; height: 28px; border: 2px solid #2A2A28; border-top-color: var(--gold-r); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 @media print {
-  .sidebar, .page-footer, .add-btn, .aform, .ictrl, .ai-add-row,
-  .ai-btn, .risk-del, .topbar-actions { display: none !important; }
+  .sidebar, .page-footer, .add-btn, .aform, .ictrl, .ai-add-row, .ai-btn, .risk-del, .topbar-actions, .sync-dot { display: none !important; }
   body { background: white; }
   .topbar { background: #0F0F0D; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .main { width: 100%; }
@@ -472,9 +207,15 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
 </head>
 <body>
 
-<div class="layout">
+<!-- Loading screen -->
+<div class="loading-screen" id="loading-screen">
+  <div class="loading-logo">Racing <span>Prep</span></div>
+  <div class="spinner"></div>
+  <p>Connecting...</p>
+</div>
 
-<!-- SIDEBAR -->
+<div class="layout" id="app" style="display:none;">
+
 <nav class="sidebar">
   <div class="sidebar-logo">
     <div class="sidebar-logo-eye">Racing Prep</div>
@@ -483,7 +224,7 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
   <div class="sidebar-section-label">Events</div>
   <div class="event-list" id="event-list"></div>
   <button class="sidebar-new-btn" onclick="openNewEventModal()">+ New event</button>
-  <button class="sidebar-new-btn" style="margin-top:4px; color:#8A8A82;" onclick="openPeopleModal()">&#9881; Manage people</button>
+  <button class="sidebar-new-btn" style="margin-top:4px;color:#8A8A82;" onclick="openPeopleModal()">&#9881; Manage people</button>
   <div class="sidebar-actions-badge" onclick="showActionPool()">
     <div class="sab-label">Action pool</div>
     <div class="sab-counts">
@@ -493,13 +234,11 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
   </div>
 </nav>
 
-<!-- MAIN -->
 <div class="main">
-
-  <div class="topbar" id="topbar">
+  <div class="topbar">
     <div class="topbar-inner">
       <div class="event-title-wrap">
-        <div class="event-title-eye" id="event-eyebrow">Pre-Festival Briefing</div>
+        <div class="event-title-eye">Pre-Festival Briefing</div>
         <input class="event-title-input" id="event-title-input" placeholder="Event name..." oninput="onTitleChange()" />
         <div class="event-meta-row">
           <div class="event-meta-field">
@@ -513,38 +252,20 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
         </div>
       </div>
       <div class="topbar-actions">
+        <span class="sync-dot" id="sync-dot" title="Sync status"></span>
         <button class="tb-btn pdf" onclick="exportPDF()">&#8595; Export PDF</button>
-        <button class="tb-btn gold" onclick="saveAll()">Save</button>
       </div>
     </div>
   </div>
 
-  <div class="content" id="main-content">
-
+  <div class="content">
     <div class="stats-strip">
-      <div class="stat-cell ct" onclick="scrollTo('section-trading')">
-        <div class="stat-lbl">Team</div>
-        <div class="stat-name">Trading</div>
-        <div class="stat-count" id="count-trading">0 priorities</div>
-      </div>
-      <div class="stat-cell co" onclick="scrollTo('section-ops')">
-        <div class="stat-lbl">Team</div>
-        <div class="stat-name">Operational</div>
-        <div class="stat-count" id="count-ops">0 priorities</div>
-      </div>
-      <div class="stat-cell cte" onclick="scrollTo('section-tech')">
-        <div class="stat-lbl">Team</div>
-        <div class="stat-name">Technical</div>
-        <div class="stat-count" id="count-tech">0 priorities</div>
-      </div>
-      <div class="stat-cell cp" onclick="scrollTo('section-product')">
-        <div class="stat-lbl">Team</div>
-        <div class="stat-name">Product</div>
-        <div class="stat-count" id="count-product">0 priorities</div>
-      </div>
+      <div class="stat-cell ct" onclick="scrollToEl('section-trading')"><div class="stat-lbl">Team</div><div class="stat-name">Trading</div><div class="stat-count" id="count-trading">0 priorities</div></div>
+      <div class="stat-cell co" onclick="scrollToEl('section-ops')"><div class="stat-lbl">Team</div><div class="stat-name">Operational</div><div class="stat-count" id="count-ops">0 priorities</div></div>
+      <div class="stat-cell cte" onclick="scrollToEl('section-tech')"><div class="stat-lbl">Team</div><div class="stat-name">Technical</div><div class="stat-count" id="count-tech">0 priorities</div></div>
+      <div class="stat-cell cp" onclick="scrollToEl('section-product')"><div class="stat-lbl">Team</div><div class="stat-name">Product</div><div class="stat-count" id="count-product">0 priorities</div></div>
     </div>
 
-    <!-- Priorities -->
     <div class="prio-grid">
       <div id="section-trading">
         <div class="team-hdr"><div class="tdot dt"></div><span class="tname">Trading</span><button class="add-btn" onclick="openForm('trading')">+ Add</button></div>
@@ -593,17 +314,11 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
     </div>
 
     <hr class="sec-rule" />
-
-    <!-- Other details -->
-    <div class="sec-hdr">
-      <span class="sec-hdr-label">Other details</span>
-      <button class="add-btn" onclick="addOtherCard()">+ Add section</button>
-    </div>
-
+    <div class="sec-hdr"><span class="sec-hdr-label">Other details</span><button class="add-btn" onclick="addOtherCard()">+ Add section</button></div>
     <div class="actions-grid" id="other-grid">
       <div class="act-card">
         <div class="act-card-hdr"><span class="act-card-icon">&#9998;</span><span class="act-card-title">General notes</span></div>
-        <div class="act-card-body"><textarea class="note-area" id="notes-general" placeholder="Meeting notes, context, background..." oninput="autoSave()"></textarea></div>
+        <div class="act-card-body"><textarea class="note-area" id="notes-general" placeholder="Meeting notes, context, background..." oninput="onNotesChange('notes_general',this.value)"></textarea></div>
       </div>
       <div class="act-card">
         <div class="act-card-hdr"><span class="act-card-icon">&#10003;</span><span class="act-card-title">Actions &amp; owners</span></div>
@@ -618,43 +333,35 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
       </div>
       <div class="act-card">
         <div class="act-card-hdr"><span class="act-card-icon">&#63;</span><span class="act-card-title">Open questions</span></div>
-        <div class="act-card-body"><textarea class="note-area" id="notes-questions" placeholder="Open questions, decisions to be made..." oninput="autoSave()"></textarea></div>
+        <div class="act-card-body"><textarea class="note-area" id="notes-questions" placeholder="Open questions, decisions to be made..." oninput="onNotesChange('notes_questions',this.value)"></textarea></div>
       </div>
       <div class="act-card">
         <div class="act-card-hdr"><span class="act-card-icon">&#9888;</span><span class="act-card-title">Risks &amp; watch points</span></div>
         <div class="act-card-body">
           <div id="risk-list"></div>
-          <div class="ai-add-row">
-            <input class="ai-inp" type="text" id="risk-input" placeholder="Describe risk..." />
-            <button onclick="addRisk()">+ Add</button>
-          </div>
+          <div class="ai-add-row"><input class="ai-inp" type="text" id="risk-input" placeholder="Describe risk..." /><button onclick="addRisk()">+ Add</button></div>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="page-footer">
-    <div class="footer-left">Racing Prep Tool &nbsp;|&nbsp; Last saved: <span id="last-saved">Not saved</span></div>
-    <div class="footer-right">
-      <button class="ft-btn" onclick="deleteCurrentEvent()">Delete event</button>
-      <button class="ft-btn primary" onclick="saveAll()">Save</button>
-    </div>
+    <div class="footer-left">Racing Prep Tool &nbsp;|&nbsp; <span id="sync-status">Connecting...</span></div>
+    <div class="footer-right"><button class="ft-btn" onclick="deleteCurrentEvent()">Delete event</button></div>
   </div>
-
 </div>
 </div>
 
-<!-- NEW EVENT MODAL -->
+<!-- Modals -->
 <div class="modal-overlay" id="modal-new">
   <div class="modal">
     <h3>New event</h3>
-    <p>Give the event a name. Open action items from the current event will be offered to carry forward.</p>
+    <p>Open action items from the current event can be carried forward.</p>
     <input type="text" id="new-event-name" placeholder="e.g. Cheltenham Festival 2026" />
     <input type="date" id="new-event-date" />
     <input type="text" id="new-event-venue" placeholder="Venue (optional)" />
     <div id="carry-section" style="display:none;">
-      <p style="margin-bottom:0.5rem; margin-top:0.25rem;"><strong>Open actions to carry forward</strong> — uncheck any you don't want.</p>
+      <p style="margin-bottom:0.5rem;margin-top:0.25rem;"><strong>Open actions to carry forward</strong> — uncheck any you don't want.</p>
       <div class="carried-list" id="carry-list"></div>
     </div>
     <div class="modal-btns">
@@ -664,19 +371,15 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
   </div>
 </div>
 
-<!-- ACTION POOL MODAL -->
 <div class="modal-overlay" id="modal-pool">
   <div class="modal" style="width:540px;">
     <h3>Action pool</h3>
-    <p>All actions across every event. Mark items closed here, or carry them into new events when creating one.</p>
-    <div id="pool-content" style="max-height:340px; overflow-y:auto;"></div>
-    <div class="modal-btns">
-      <button class="mbtn primary" onclick="closeModal('modal-pool')">Done</button>
-    </div>
+    <p>All actions across every event.</p>
+    <div id="pool-content" style="max-height:340px;overflow-y:auto;"></div>
+    <div class="modal-btns"><button class="mbtn primary" onclick="closeModal('modal-pool')">Done</button></div>
   </div>
 </div>
 
-<!-- RENAME MODAL -->
 <div class="modal-overlay" id="modal-rename">
   <div class="modal">
     <h3>Rename event</h3>
@@ -688,107 +391,144 @@ body { font-family: 'Georgia','Times New Roman',serif; background: var(--bg); co
   </div>
 </div>
 
-
-<!-- PEOPLE MODAL -->
 <div class="modal-overlay" id="modal-people">
   <div class="modal" style="width:420px;">
     <h3>Manage people</h3>
     <p>Add or remove names from the owner list used across all events.</p>
-    <div id="people-list" style="margin-bottom:10px; display:flex; flex-direction:column; gap:6px; max-height:260px; overflow-y:auto;"></div>
-    <div style="display:flex; gap:6px;">
+    <div id="people-list" style="margin-bottom:10px;display:flex;flex-direction:column;gap:6px;max-height:260px;overflow-y:auto;"></div>
+    <div style="display:flex;gap:6px;">
       <input type="text" id="new-person-input" placeholder="Full name..." style="margin-bottom:0;" />
-      <button class="mbtn primary" onclick="addPerson()" style="white-space:nowrap; flex-shrink:0;">+ Add</button>
+      <button class="mbtn primary" onclick="addPerson()" style="white-space:nowrap;flex-shrink:0;">+ Add</button>
     </div>
-    <div class="modal-btns" style="margin-top:1rem;">
-      <button class="mbtn primary" onclick="closeModal('modal-people')">Done</button>
-    </div>
+    <div class="modal-btns" style="margin-top:1rem;"><button class="mbtn primary" onclick="closeModal('modal-people')">Done</button></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script>
-const SK = 'racing_prep_v2';
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, update, remove, get } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCXnle8jc96uc5Y7DZzAILXiCc5jrWq3ug",
+  authDomain: "ras-key-event-planning.firebaseapp.com",
+  databaseURL: "https://ras-key-event-planning-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "ras-key-event-planning",
+  storageBucket: "ras-key-event-planning.firebasestorage.app",
+  messagingSenderId: "1034314925537",
+  appId: "1:1034314925537:web:da4734d79444753fdf7ea0",
+  measurementId: "G-9YYSL80YMG"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 const DEFAULT_PEOPLE = ['Andy Beckett','Alex Ashton','Jack Kelliher','James King','Kieran Murtha','Colin Jaggard','Dean Hizzett','Jonny Gray','Richard Slater','Paul Rigby','Brent Dolan'];
 
-// State: { events: [...], currentId, people: [] }
-let state = { events: [], currentId: null, people: [] };
+let state = { events: {}, people: [], currentId: null };
 let PEOPLE = [];
 let renameTargetId = null;
+let notesDebounce = {};
 
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
+// ── SYNC STATUS ──
+function setSyncStatus(s) {
+  const dot = document.getElementById('sync-dot');
+  const txt = document.getElementById('sync-status');
+  if (s === 'syncing') { dot.className='sync-dot syncing'; txt.textContent='Saving...'; }
+  else if (s === 'synced') { dot.className='sync-dot synced'; txt.textContent='All changes saved'; }
+  else if (s === 'error') { dot.className='sync-dot error'; txt.textContent='Sync error'; }
+  else { dot.className='sync-dot'; txt.textContent='Connected'; }
+}
+
+function dbSet(path, value) {
+  setSyncStatus('syncing');
+  return set(ref(db, path), value)
+    .then(() => setSyncStatus('synced'))
+    .catch(() => setSyncStatus('error'));
+}
+function dbUpdate(path, value) {
+  setSyncStatus('syncing');
+  return update(ref(db, path), value)
+    .then(() => setSyncStatus('synced'))
+    .catch(() => setSyncStatus('error'));
+}
+function dbRemove(path) {
+  setSyncStatus('syncing');
+  return remove(ref(db, path))
+    .then(() => setSyncStatus('synced'))
+    .catch(() => setSyncStatus('error'));
+}
+
+// ── INIT: listen to full DB ──
+function init() {
+  onValue(ref(db, '/'), (snapshot) => {
+    const data = snapshot.val() || {};
+    const eventsRaw = data.events || {};
+    const people = data.people || DEFAULT_PEOPLE;
+
+    // Convert events object to array-friendly map
+    state.events = eventsRaw;
+    state.people = people;
+    PEOPLE = people;
+
+    // Pick currentId if not set or no longer valid
+    const ids = Object.keys(eventsRaw);
+    if (!state.currentId || !eventsRaw[state.currentId]) {
+      state.currentId = ids.length ? ids[0] : null;
+    }
+
+    // If no events exist at all, create default
+    if (!ids.length) {
+      const id = uid();
+      const ev = blankEvent('Royal Ascot 2025', '', 'Ascot');
+      ev.id = id;
+      state.currentId = id;
+      dbSet('events/' + id, ev);
+      return;
+    }
+
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    populateOwnerDrops();
+    renderAll();
+  }, (error) => {
+    setSyncStatus('error');
+    document.getElementById('loading-screen').querySelector('p').textContent = 'Connection failed. Check your internet connection.';
+  });
+}
+
 function blankEvent(name, date, venue, carriedActions) {
-  return {
-    id: uid(), name: name || 'New Event', date: date || '', venue: venue || '',
-    trading: [], ops: [], tech: [], product: [],
-    actions: carriedActions || [],
-    risks: [], notes_general: '', notes_questions: ''
-  };
+  return { id: uid(), name: name||'New Event', date: date||'', venue: venue||'', trading:[], ops:[], tech:[], product:[], actions: carriedActions||[], risks:[], notes_general:'', notes_questions:'' };
 }
 
-function load() {
-  try {
-    const raw = localStorage.getItem(SK);
-    if (raw) state = JSON.parse(raw);
-    if (!state.events) state.events = [];
-    if (!state.people || !state.people.length) state.people = [...DEFAULT_PEOPLE];
-    if (!state.currentId && state.events.length) state.currentId = state.events[0].id;
-  } catch(e) {}
-  PEOPLE = state.people;
-  if (!state.events.length) {
-    const ev = blankEvent('Royal Ascot 2025', '', 'Ascot');
-    state.events.push(ev);
-    state.currentId = ev.id;
-  }
+function currentEvent() {
+  return state.currentId ? (state.events[state.currentId] || null) : null;
 }
 
-function persist() {
-  try {
-    localStorage.setItem(SK, JSON.stringify(state));
-    document.getElementById('last-saved').textContent = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-  } catch(e) {}
-}
-
-function saveAll() {
-  const ev = currentEvent();
-  if (!ev) return;
-  ev.notes_general = document.getElementById('notes-general').value;
-  ev.notes_questions = document.getElementById('notes-questions').value;
-  persist();
-  showToast('Saved ✓');
-}
-
-let autoTimer;
-function autoSave() { clearTimeout(autoTimer); autoTimer = setTimeout(() => { saveAll(); }, 900); }
-
-function currentEvent() { return state.events.find(e => e.id === state.currentId) || null; }
-
-// ── POPULATE OWNER DROPDOWNS ──
+// ── OWNER DROPDOWNS ──
 function populateOwnerDrops() {
   ['trading','ops','tech','product'].forEach(t => {
-    const sel = document.getElementById('ft-owner-' + t);
+    const sel = document.getElementById('ft-owner-'+t);
     sel.innerHTML = '<option value="">No owner</option>';
-    PEOPLE.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; sel.appendChild(o); });
+    PEOPLE.forEach(p => { const o = document.createElement('option'); o.value=p; o.textContent=p; sel.appendChild(o); });
   });
   const asel = document.getElementById('action-owner-sel');
   asel.innerHTML = '<option value="">No owner</option>';
-  PEOPLE.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; asel.appendChild(o); });
+  PEOPLE.forEach(p => { const o = document.createElement('option'); o.value=p; o.textContent=p; asel.appendChild(o); });
 }
 
-// ── RENDER SIDEBAR ──
+// ── SIDEBAR ──
 function renderSidebar() {
   const el = document.getElementById('event-list');
   el.innerHTML = '';
-  state.events.forEach(ev => {
+  Object.values(state.events).forEach(ev => {
     const div = document.createElement('div');
     div.className = 'event-item' + (ev.id === state.currentId ? ' active' : '');
     const yr = ev.date ? new Date(ev.date).getFullYear() : '';
-    div.innerHTML = `
-      <div class="event-dot"></div>
-      <span class="event-name">${ev.name}</span>
-      ${yr ? `<span class="event-year">${yr}</span>` : ''}
-      <button class="event-actions-btn" onclick="event.stopPropagation(); openRenameModal('${ev.id}')" title="Rename">✎</button>`;
+    div.innerHTML = `<div class="event-dot"></div><span class="event-name">${ev.name}</span>${yr?`<span class="event-year">${yr}</span>`:''}<button class="event-actions-btn" title="Rename" onclick="event.stopPropagation();openRenameModal('${ev.id}')">✎</button>`;
     div.addEventListener('click', () => switchEvent(ev.id));
     el.appendChild(div);
   });
@@ -796,28 +536,21 @@ function renderSidebar() {
 }
 
 function updatePoolBadge() {
-  let open = 0, closed = 0;
-  state.events.forEach(ev => ev.actions.forEach(a => a.closed ? closed++ : open++));
-  document.getElementById('pool-open-count').textContent = open + ' open';
-  document.getElementById('pool-closed-count').textContent = closed + ' closed';
+  let open=0, closed=0;
+  Object.values(state.events).forEach(ev => (ev.actions||[]).forEach(a => a.closed ? closed++ : open++));
+  document.getElementById('pool-open-count').textContent = open+' open';
+  document.getElementById('pool-closed-count').textContent = closed+' closed';
 }
 
-// ── SWITCH EVENT ──
-function switchEvent(id) {
-  saveAll();
-  state.currentId = id;
-  renderAll();
-}
+function switchEvent(id) { state.currentId = id; renderAll(); }
 
-// ── RENDER EVERYTHING ──
 function renderAll() {
-  const ev = currentEvent();
-  if (!ev) return;
-  document.getElementById('event-title-input').value = ev.name;
-  document.getElementById('event-date-input').value = ev.date || '';
-  document.getElementById('event-venue-input').value = ev.venue || '';
-  document.getElementById('notes-general').value = ev.notes_general || '';
-  document.getElementById('notes-questions').value = ev.notes_questions || '';
+  const ev = currentEvent(); if (!ev) return;
+  document.getElementById('event-title-input').value = ev.name||'';
+  document.getElementById('event-date-input').value = ev.date||'';
+  document.getElementById('event-venue-input').value = ev.venue||'';
+  document.getElementById('notes-general').value = ev.notes_general||'';
+  document.getElementById('notes-questions').value = ev.notes_questions||'';
   ['trading','ops','tech','product'].forEach(renderList);
   renderActions();
   renderRisks();
@@ -827,24 +560,15 @@ function renderAll() {
 // ── PRIORITIES ──
 function renderList(team) {
   const ev = currentEvent(); if (!ev) return;
-  const ul = document.getElementById('list-' + team);
+  const ul = document.getElementById('list-'+team);
   ul.innerHTML = '';
-  if (!ev[team].length) {
-    ul.innerHTML = '<li class="empty-state">No priorities yet — click + Add</li>';
-  }
-  ev[team].forEach((item, i) => {
+  const items = ev[team]||[];
+  if (!items.length) { ul.innerHTML='<li class="empty-state">No priorities yet — click + Add</li>'; updateCounts(); return; }
+  items.forEach((item,i) => {
     const li = document.createElement('li');
     li.className = 'pitem';
-    const ow = item.owner ? `<span class="obadge" onclick="cycleOwner('${team}',${i})" title="Click to change">${item.owner}</span>` : `<span class="obadge" style="opacity:.35;" onclick="cycleOwner('${team}',${i})" title="Assign owner">Unassigned</span>`;
-    li.innerHTML = `<div class="itop"><span class="inum">${i+1}.</span><div class="ibody">
-      <div class="ititle" contenteditable="true" onblur="editItem('${team}',${i},'title',this.textContent)">${item.title}</div>
-      <div class="inote" contenteditable="true" data-ph="Add a note..." onblur="editItem('${team}',${i},'note',this.textContent)">${item.note||''}</div>
-      <div class="ifoot">
-        <span class="badge b${item.pri}" onclick="cyclePri('${team}',${i})">${priLabel(item.pri)}</span>
-        ${ow}
-        <div class="ictrl"><button class="cbtn" onclick="removeItem('${team}',${i})">Remove</button></div>
-      </div>
-    </div></div>`;
+    const ow = item.owner ? `<span class="obadge" onclick="cycleOwner('${team}',${i})">${item.owner}</span>` : `<span class="obadge" style="opacity:.35;" onclick="cycleOwner('${team}',${i})">Unassigned</span>`;
+    li.innerHTML = `<div class="itop"><span class="inum">${i+1}.</span><div class="ibody"><div class="ititle" contenteditable="true" onblur="editItem('${team}',${i},'title',this.textContent)">${item.title}</div><div class="inote" contenteditable="true" data-ph="Add a note..." onblur="editItem('${team}',${i},'note',this.textContent)">${item.note||''}</div><div class="ifoot"><span class="badge b${item.pri}" onclick="cyclePri('${team}',${i})">${priLabel(item.pri)}</span>${ow}<div class="ictrl"><button class="cbtn" onclick="removeItem('${team}',${i})">Remove</button></div></div></div></div>`;
     ul.appendChild(li);
   });
   updateCounts();
@@ -852,53 +576,55 @@ function renderList(team) {
 
 function priLabel(p) { return p==='high'?'High':p==='med'?'Medium':'Low'; }
 
-function cyclePri(team, i) {
+function saveTeam(team) {
   const ev = currentEvent(); if (!ev) return;
-  const c = {high:'med',med:'low',low:'high'};
+  dbSet('events/'+ev.id+'/'+team, ev[team]||[]);
+}
+
+window.cyclePri = function(team,i) {
+  const ev = currentEvent(); if (!ev) return;
+  const c={high:'med',med:'low',low:'high'};
   ev[team][i].pri = c[ev[team][i].pri];
-  renderList(team); autoSave();
-}
-
-function cycleOwner(team, i) {
+  renderList(team); saveTeam(team);
+};
+window.cycleOwner = function(team,i) {
   const ev = currentEvent(); if (!ev) return;
-  const cur = ev[team][i].owner || '';
+  const cur = ev[team][i].owner||'';
   const idx = PEOPLE.indexOf(cur);
-  ev[team][i].owner = idx === -1 ? PEOPLE[0] : (idx === PEOPLE.length-1 ? '' : PEOPLE[idx+1]);
-  renderList(team); autoSave();
-}
-
-function editItem(team, i, field, val) {
+  ev[team][i].owner = idx===-1?PEOPLE[0]:(idx===PEOPLE.length-1?'':PEOPLE[idx+1]);
+  renderList(team); saveTeam(team);
+};
+window.editItem = function(team,i,field,val) {
   const ev = currentEvent(); if (!ev) return;
-  ev[team][i][field] = val.trim(); autoSave();
-}
-
-function removeItem(team, i) {
+  ev[team][i][field] = val.trim(); saveTeam(team);
+};
+window.removeItem = function(team,i) {
   const ev = currentEvent(); if (!ev) return;
-  ev[team].splice(i,1); renderList(team); autoSave();
-}
-
-function openForm(team) {
+  ev[team].splice(i,1); renderList(team); saveTeam(team);
+};
+window.openForm = function(team) {
   document.getElementById('form-'+team).classList.add('open');
   document.getElementById('ft-title-'+team).focus();
-}
-function closeForm(team) {
+};
+window.closeForm = function(team) {
   document.getElementById('form-'+team).classList.remove('open');
   document.getElementById('ft-title-'+team).value='';
   document.getElementById('ft-note-'+team).value='';
-}
-function saveItem(team) {
+};
+window.saveItem = function(team) {
   const ev = currentEvent(); if (!ev) return;
   const title = document.getElementById('ft-title-'+team).value.trim();
   if (!title) return;
+  if (!ev[team]) ev[team]=[];
   ev[team].push({ title, pri: document.getElementById('ft-pri-'+team).value, note: document.getElementById('ft-note-'+team).value.trim(), owner: document.getElementById('ft-owner-'+team).value });
-  closeForm(team); renderList(team); autoSave();
-}
+  closeForm(team); renderList(team); saveTeam(team);
+};
 
 function updateCounts() {
   const ev = currentEvent(); if (!ev) return;
   ['trading','ops','tech','product'].forEach(t => {
-    const n = ev[t].length;
-    document.getElementById('count-'+t).textContent = n + ' priorit' + (n===1?'y':'ies');
+    const n = (ev[t]||[]).length;
+    document.getElementById('count-'+t).textContent = n+' priorit'+(n===1?'y':'ies');
   });
 }
 
@@ -907,311 +633,259 @@ function renderActions() {
   const ev = currentEvent(); if (!ev) return;
   const ul = document.getElementById('action-list');
   ul.innerHTML = '';
-  if (!ev.actions.length) { ul.innerHTML = '<li class="empty-state">No actions yet</li>'; return; }
-  ev.actions.forEach((a, i) => {
+  const actions = ev.actions||[];
+  if (!actions.length) { ul.innerHTML='<li class="empty-state">No actions yet</li>'; return; }
+  actions.forEach((a,i) => {
     const li = document.createElement('li');
-    li.className = 'ai-item ' + (a.closed ? 'closed' : a.carriedFrom ? 'carried' : 'open');
-    li.innerHTML = `
-      ${a.owner ? `<span class="ai-owner">${a.owner}</span>` : ''}
-      <span class="ai-text${a.closed?' done':''}">${a.text}</span>
-      ${a.carriedFrom ? `<span class="ai-carried-tag">↩ from ${a.carriedFrom}</span>` : ''}
-      <div class="ai-ctrl">
-        <button class="ai-btn done-btn" onclick="toggleActionClosed(${i})" title="${a.closed?'Reopen':'Mark done'}">${a.closed?'Reopen':'Done'}</button>
-        <button class="ai-btn del-btn" onclick="removeAction(${i})" title="Delete">✕</button>
-      </div>`;
+    li.className = 'ai-item '+(a.closed?'closed':a.carriedFrom?'carried':'open');
+    li.innerHTML = `${a.owner?`<span class="ai-owner">${a.owner}</span>`:''}<span class="ai-text${a.closed?' done':''}">${a.text}</span>${a.carriedFrom?`<span class="ai-carried-tag">↩ from ${a.carriedFrom}</span>`:''}<div class="ai-ctrl"><button class="ai-btn done-btn" onclick="toggleActionClosed(${i})">${a.closed?'Reopen':'Done'}</button><button class="ai-btn del-btn" onclick="removeAction(${i})">✕</button></div>`;
     ul.appendChild(li);
   });
   updatePoolBadge();
 }
 
-function addAction() {
+window.addAction = function() {
   const ev = currentEvent(); if (!ev) return;
   const txt = document.getElementById('action-input').value.trim();
   if (!txt) return;
-  ev.actions.push({ id: uid(), text: txt, owner: document.getElementById('action-owner-sel').value, closed: false, eventId: ev.id, eventName: ev.name });
-  document.getElementById('action-input').value = '';
-  document.getElementById('action-owner-sel').value = '';
-  renderActions(); autoSave();
-}
-
-function toggleActionClosed(i) {
+  if (!ev.actions) ev.actions=[];
+  ev.actions.push({ id:uid(), text:txt, owner:document.getElementById('action-owner-sel').value, closed:false, eventId:ev.id, eventName:ev.name });
+  document.getElementById('action-input').value='';
+  document.getElementById('action-owner-sel').value='';
+  renderActions();
+  dbSet('events/'+ev.id+'/actions', ev.actions);
+};
+window.toggleActionClosed = function(i) {
   const ev = currentEvent(); if (!ev) return;
   ev.actions[i].closed = !ev.actions[i].closed;
-  renderActions(); autoSave();
-}
-
-function removeAction(i) {
+  renderActions();
+  dbSet('events/'+ev.id+'/actions', ev.actions);
+};
+window.removeAction = function(i) {
   const ev = currentEvent(); if (!ev) return;
-  ev.actions.splice(i,1); renderActions(); autoSave();
-}
+  ev.actions.splice(i,1); renderActions();
+  dbSet('events/'+ev.id+'/actions', ev.actions);
+};
 
 // ── RISKS ──
 function renderRisks() {
   const ev = currentEvent(); if (!ev) return;
   const el = document.getElementById('risk-list');
   el.innerHTML = '';
-  ev.risks.forEach((r,i) => {
+  (ev.risks||[]).forEach((r,i) => {
     const d = document.createElement('div');
-    d.className = 'risk-item';
-    d.innerHTML = `<span class="risk-tag">Watch</span><span style="flex:1;">${r}</span><button class="risk-del" onclick="removeRisk(${i})">✕</button>`;
+    d.className='risk-item';
+    d.innerHTML=`<span class="risk-tag">Watch</span><span style="flex:1;">${r}</span><button class="risk-del" onclick="removeRisk(${i})">✕</button>`;
     el.appendChild(d);
   });
 }
-function addRisk() {
+window.addRisk = function() {
   const ev = currentEvent(); if (!ev) return;
   const txt = document.getElementById('risk-input').value.trim();
   if (!txt) return;
+  if (!ev.risks) ev.risks=[];
   ev.risks.push(txt);
-  document.getElementById('risk-input').value = '';
-  renderRisks(); autoSave();
-}
-function removeRisk(i) {
+  document.getElementById('risk-input').value='';
+  renderRisks();
+  dbSet('events/'+ev.id+'/risks', ev.risks);
+};
+window.removeRisk = function(i) {
   const ev = currentEvent(); if (!ev) return;
-  ev.risks.splice(i,1); renderRisks(); autoSave();
-}
+  ev.risks.splice(i,1); renderRisks();
+  dbSet('events/'+ev.id+'/risks', ev.risks);
+};
+
+// ── NOTES (debounced) ──
+window.onNotesChange = function(field, value) {
+  const ev = currentEvent(); if (!ev) return;
+  ev[field] = value;
+  clearTimeout(notesDebounce[field]);
+  notesDebounce[field] = setTimeout(() => {
+    dbUpdate('events/'+ev.id, { [field]: value });
+  }, 800);
+};
 
 // ── TITLE / META ──
-function onTitleChange() {
+window.onTitleChange = function() {
   const ev = currentEvent(); if (!ev) return;
   ev.name = document.getElementById('event-title-input').value;
-  renderSidebar(); autoSave();
-}
-function onMetaChange() {
+  renderSidebar();
+  clearTimeout(notesDebounce['name']);
+  notesDebounce['name'] = setTimeout(() => dbUpdate('events/'+ev.id, {name:ev.name}), 600);
+};
+window.onMetaChange = function() {
   const ev = currentEvent(); if (!ev) return;
   ev.date = document.getElementById('event-date-input').value;
   ev.venue = document.getElementById('event-venue-input').value;
-  autoSave();
-}
+  clearTimeout(notesDebounce['meta']);
+  notesDebounce['meta'] = setTimeout(() => dbUpdate('events/'+ev.id, {date:ev.date, venue:ev.venue}), 600);
+};
 
-// ── NEW EVENT MODAL ──
-function openNewEventModal() {
-  saveAll();
+// ── NEW EVENT ──
+window.openNewEventModal = function() {
   const ev = currentEvent();
-  const openActions = ev ? ev.actions.filter(a => !a.closed) : [];
+  const openActions = ev ? (ev.actions||[]).filter(a=>!a.closed) : [];
   const cs = document.getElementById('carry-section');
   const cl = document.getElementById('carry-list');
   if (openActions.length) {
-    cs.style.display = 'block';
-    cl.innerHTML = '';
+    cs.style.display='block'; cl.innerHTML='';
     openActions.forEach(a => {
       const row = document.createElement('div');
-      row.className = 'carried-row';
-      row.innerHTML = `<input type="checkbox" checked data-aid="${a.id}" />
-        <span class="carried-row-text">${a.text}</span>
-        ${a.owner ? `<span class="carried-row-owner">${a.owner}</span>` : ''}`;
+      row.className='carried-row';
+      row.innerHTML=`<input type="checkbox" checked data-aid="${a.id}" /><span class="carried-row-text">${a.text}</span>${a.owner?`<span class="carried-row-owner">${a.owner}</span>`:''}`;
       cl.appendChild(row);
     });
-  } else {
-    cs.style.display = 'none';
-  }
-  document.getElementById('new-event-name').value = '';
-  document.getElementById('new-event-date').value = '';
-  document.getElementById('new-event-venue').value = '';
+  } else { cs.style.display='none'; }
+  document.getElementById('new-event-name').value='';
+  document.getElementById('new-event-date').value='';
+  document.getElementById('new-event-venue').value='';
   openModal('modal-new');
-  setTimeout(() => document.getElementById('new-event-name').focus(), 100);
-}
+  setTimeout(()=>document.getElementById('new-event-name').focus(),100);
+};
 
-function createEvent() {
+window.createEvent = function() {
   const name = document.getElementById('new-event-name').value.trim();
   if (!name) { document.getElementById('new-event-name').focus(); return; }
   const date = document.getElementById('new-event-date').value;
   const venue = document.getElementById('new-event-venue').value.trim();
-
   const ev = currentEvent();
-  const checkedIds = new Set(
-    Array.from(document.querySelectorAll('#carry-list input[type=checkbox]:checked')).map(cb => cb.dataset.aid)
-  );
-
-  // Build carried actions with reference to source event
-  const carried = ev ? ev.actions.filter(a => !a.closed && checkedIds.has(a.id)).map(a => ({
-    ...a, id: uid(), carriedFrom: ev.name, closed: false, eventId: null
-  })) : [];
-
-  const newEv = blankEvent(name, date, venue, carried);
-  state.events.push(newEv);
+  const checkedIds = new Set(Array.from(document.querySelectorAll('#carry-list input[type=checkbox]:checked')).map(cb=>cb.dataset.aid));
+  const carried = ev ? (ev.actions||[]).filter(a=>!a.closed&&checkedIds.has(a.id)).map(a=>({...a,id:uid(),carriedFrom:ev.name,closed:false})) : [];
+  const newEv = blankEvent(name,date,venue,carried);
   state.currentId = newEv.id;
   closeModal('modal-new');
-  renderAll();
-  showToast('Event created');
-}
+  dbSet('events/'+newEv.id, newEv).then(()=>showToast('Event created'));
+};
 
 // ── RENAME ──
-function openRenameModal(id) {
-  renameTargetId = id;
-  const ev = state.events.find(e => e.id === id);
-  document.getElementById('rename-input').value = ev ? ev.name : '';
+window.openRenameModal = function(id) {
+  renameTargetId=id;
+  const ev = state.events[id];
+  document.getElementById('rename-input').value = ev?ev.name:'';
   openModal('modal-rename');
-  setTimeout(() => document.getElementById('rename-input').focus(), 100);
-}
-function confirmRename() {
+  setTimeout(()=>document.getElementById('rename-input').focus(),100);
+};
+window.confirmRename = function() {
   const val = document.getElementById('rename-input').value.trim();
-  if (!val || !renameTargetId) return;
-  const ev = state.events.find(e => e.id === renameTargetId);
-  if (ev) { ev.name = val; persist(); renderAll(); }
+  if (!val||!renameTargetId) return;
+  dbUpdate('events/'+renameTargetId, {name:val});
   closeModal('modal-rename');
-}
+};
 
 // ── ACTION POOL ──
-function showActionPool() {
+window.showActionPool = function() {
   const el = document.getElementById('pool-content');
-  el.innerHTML = '';
-  if (!state.events.some(ev => ev.actions.length)) {
-    el.innerHTML = '<div class="empty-state">No actions yet across any event.</div>';
-  } else {
-    state.events.forEach(ev => {
-      if (!ev.actions.length) return;
-      const sec = document.createElement('div');
-      sec.style.cssText = 'margin-bottom:1rem;';
-      sec.innerHTML = `<div style="font-family:Arial,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--rule);">${ev.name}</div>`;
-      ev.actions.forEach((a, i) => {
-        const row = document.createElement('div');
-        row.className = 'ai-item ' + (a.closed ? 'closed' : 'open');
-        row.style.marginBottom = '4px';
-        row.innerHTML = `
-          ${a.owner ? `<span class="ai-owner">${a.owner}</span>` : ''}
-          <span class="ai-text${a.closed?' done':''}">${a.text}</span>
-          <div class="ai-ctrl">
-            <button class="ai-btn done-btn" onclick="togglePoolAction('${ev.id}',${i})">${a.closed?'Reopen':'Done'}</button>
-          </div>`;
+  el.innerHTML='';
+  const allEvs = Object.values(state.events);
+  if (!allEvs.some(ev=>(ev.actions||[]).length)) { el.innerHTML='<div class="empty-state">No actions yet.</div>'; }
+  else {
+    allEvs.forEach(ev => {
+      if (!(ev.actions||[]).length) return;
+      const sec=document.createElement('div'); sec.style.cssText='margin-bottom:1rem;';
+      sec.innerHTML=`<div style="font-family:Arial,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--rule);">${ev.name}</div>`;
+      ev.actions.forEach((a,i)=>{
+        const row=document.createElement('div');
+        row.className='ai-item '+(a.closed?'closed':'open'); row.style.marginBottom='4px';
+        row.innerHTML=`${a.owner?`<span class="ai-owner">${a.owner}</span>`:''}<span class="ai-text${a.closed?' done':''}">${a.text}</span><div class="ai-ctrl"><button class="ai-btn done-btn" onclick="togglePoolAction('${ev.id}',${i})">${a.closed?'Reopen':'Done'}</button></div>`;
         sec.appendChild(row);
       });
       el.appendChild(sec);
     });
   }
   openModal('modal-pool');
-}
+};
 
-function togglePoolAction(evId, i) {
-  const ev = state.events.find(e => e.id === evId);
-  if (!ev) return;
+window.togglePoolAction = function(evId,i) {
+  const ev = state.events[evId]; if (!ev) return;
   ev.actions[i].closed = !ev.actions[i].closed;
-  persist();
-  updatePoolBadge();
+  dbSet('events/'+evId+'/actions', ev.actions);
   showActionPool();
-  if (state.currentId === evId) renderActions();
-}
+  if (state.currentId===evId) renderActions();
+};
 
 // ── OTHER CARDS ──
-function addOtherCard() {
-  const title = prompt('Section title:');
-  if (!title) return;
-  const grid = document.getElementById('other-grid');
-  const id = 'extra-' + uid();
-  const card = document.createElement('div');
-  card.className = 'act-card';
-  card.innerHTML = `<div class="act-card-hdr"><span class="act-card-icon">&#9998;</span><span class="act-card-title">${title}</span></div><div class="act-card-body"><textarea class="note-area" id="${id}" placeholder="Add notes..." oninput="autoSave()"></textarea></div>`;
+window.addOtherCard = function() {
+  const title=prompt('Section title:'); if (!title) return;
+  const grid=document.getElementById('other-grid');
+  const id='extra-'+uid();
+  const card=document.createElement('div'); card.className='act-card';
+  card.innerHTML=`<div class="act-card-hdr"><span class="act-card-icon">&#9998;</span><span class="act-card-title">${title}</span></div><div class="act-card-body"><textarea class="note-area" id="${id}" placeholder="Add notes..."></textarea></div>`;
   grid.appendChild(card);
-}
+};
 
 // ── DELETE EVENT ──
-function deleteCurrentEvent() {
-  if (state.events.length <= 1) { showToast('Cannot delete the only event'); return; }
-  const ev = currentEvent();
+window.deleteCurrentEvent = function() {
+  if (Object.keys(state.events).length<=1) { showToast('Cannot delete the only event'); return; }
+  const ev=currentEvent();
   if (!confirm(`Delete "${ev.name}"? This cannot be undone.`)) return;
-  state.events = state.events.filter(e => e.id !== state.currentId);
-  state.currentId = state.events[state.events.length-1].id;
-  persist(); renderAll(); showToast('Event deleted');
-}
+  const ids=Object.keys(state.events).filter(id=>id!==state.currentId);
+  state.currentId=ids[ids.length-1];
+  dbRemove('events/'+ev.id).then(()=>showToast('Event deleted'));
+};
 
-// ── EXPORT PDF ──
-function exportPDF() {
-  const hideEls = document.querySelectorAll('.sidebar, .page-footer, .add-btn, .aform, .ictrl, .ai-add-row, .ai-btn, .risk-del, .topbar-actions');
-  hideEls.forEach(el => el.style.display='none');
-  const opt = {
-    margin: 0, filename: (currentEvent()?.name||'prep').replace(/\s+/g,'_')+'.pdf',
-    image: {type:'jpeg',quality:0.98},
-    html2canvas: {scale:2,useCORS:true},
-    jsPDF: {unit:'mm',format:'a3',orientation:'portrait'}
-  };
-  html2pdf().set(opt).from(document.body).save().then(() => {
-    hideEls.forEach(el => el.style.display='');
-  });
-}
-
-// ── PEOPLE MANAGEMENT ──
-function openPeopleModal() {
-  renderPeopleList();
-  openModal('modal-people');
-  setTimeout(() => document.getElementById('new-person-input').focus(), 100);
-}
-
+// ── PEOPLE ──
+window.openPeopleModal = function() { renderPeopleList(); openModal('modal-people'); setTimeout(()=>document.getElementById('new-person-input').focus(),100); };
 function renderPeopleList() {
-  const el = document.getElementById('people-list');
-  el.innerHTML = '';
-  if (!PEOPLE.length) {
-    el.innerHTML = '<div style="font-family:Arial,sans-serif;font-size:12px;color:var(--ink-light);font-style:italic;">No people yet — add one below.</div>';
-    return;
-  }
-  PEOPLE.forEach((p, i) => {
-    const row = document.createElement('div');
-    row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--cream);border-radius:var(--r);font-family:Arial,sans-serif;font-size:13px;';
-    row.innerHTML = `<span style="flex:1;">${p}</span><button class="ai-btn del-btn" onclick="removePerson(${i})" style="flex-shrink:0;">Remove</button>`;
+  const el=document.getElementById('people-list'); el.innerHTML='';
+  if (!PEOPLE.length) { el.innerHTML='<div style="font-family:Arial,sans-serif;font-size:12px;color:var(--ink-light);font-style:italic;">No people yet.</div>'; return; }
+  PEOPLE.forEach((p,i)=>{
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--cream);border-radius:var(--r);font-family:Arial,sans-serif;font-size:13px;';
+    row.innerHTML=`<span style="flex:1;">${p}</span><button class="ai-btn del-btn" onclick="removePerson(${i})">Remove</button>`;
     el.appendChild(row);
   });
 }
-
-function addPerson() {
-  const inp = document.getElementById('new-person-input');
-  const name = inp.value.trim();
-  if (!name) return;
+window.addPerson = function() {
+  const inp=document.getElementById('new-person-input');
+  const name=inp.value.trim(); if (!name) return;
   if (PEOPLE.includes(name)) { showToast('Already in list'); return; }
   PEOPLE.push(name);
-  state.people = PEOPLE;
-  inp.value = '';
-  persist();
-  populateOwnerDrops();
-  renderPeopleList();
-  showToast(name + ' added');
-}
+  inp.value='';
+  dbSet('people', PEOPLE).then(()=>{ populateOwnerDrops(); renderPeopleList(); showToast(name+' added'); });
+};
+window.removePerson = function(i) {
+  const name=PEOPLE[i];
+  if (!confirm('Remove '+name+'?')) return;
+  PEOPLE.splice(i,1);
+  dbSet('people', PEOPLE).then(()=>{ populateOwnerDrops(); renderPeopleList(); });
+};
 
-function removePerson(i) {
-  const name = PEOPLE[i];
-  if (!confirm('Remove ' + name + ' from the people list? They will stay on any items already assigned.')) return;
-  PEOPLE.splice(i, 1);
-  state.people = PEOPLE;
-  persist();
-  populateOwnerDrops();
-  renderPeopleList();
-}
+// ── EXPORT PDF ──
+window.exportPDF = function() {
+  const hideEls=document.querySelectorAll('.sidebar,.page-footer,.add-btn,.aform,.ictrl,.ai-add-row,.ai-btn,.risk-del,.topbar-actions');
+  hideEls.forEach(el=>el.style.display='none');
+  const ev=currentEvent();
+  const opt={ margin:0, filename:(ev?.name||'prep').replace(/\s+/g,'_')+'.pdf', image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true}, jsPDF:{unit:'mm',format:'a3',orientation:'portrait'} };
+  html2pdf().set(opt).from(document.getElementById('app')).save().then(()=>{ hideEls.forEach(el=>el.style.display=''); });
+};
 
-// ── MODAL UTILS ──
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
-});
+// ── MODALS ──
+window.openModal = function(id) { document.getElementById(id).classList.add('open'); };
+window.closeModal = function(id) { document.getElementById(id).classList.remove('open'); };
+document.querySelectorAll('.modal-overlay').forEach(m=>{ m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open'); }); });
 
 // ── TOAST ──
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.style.display='block';
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.style.display='none', 2200);
+  const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block';
+  clearTimeout(t._t); t._t=setTimeout(()=>t.style.display='none',2200);
 }
+window.showToast = showToast;
 
 // ── SCROLL ──
-function scrollTo(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
+window.scrollToEl = function(id) { const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
 
-// ── KEYBOARD ──
-function setupKeys() {
-  ['trading','ops','tech','product'].forEach(t => {
-    document.getElementById('ft-title-'+t).addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();saveItem(t);} });
-  });
-  document.getElementById('action-input').addEventListener('keydown', e => { if(e.key==='Enter') addAction(); });
-  document.getElementById('risk-input').addEventListener('keydown', e => { if(e.key==='Enter') addRisk(); });
-  document.getElementById('new-event-name').addEventListener('keydown', e => { if(e.key==='Enter') createEvent(); });
-  document.getElementById('rename-input').addEventListener('keydown', e => { if(e.key==='Enter') confirmRename(); });
-  document.getElementById('new-person-input').addEventListener('keydown', e => { if(e.key==='Enter') addPerson(); });
-}
+// ── KEYS ──
+['trading','ops','tech','product'].forEach(t=>{
+  document.getElementById('ft-title-'+t).addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();saveItem(t);} });
+});
+document.getElementById('action-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addAction(); });
+document.getElementById('risk-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addRisk(); });
+document.getElementById('new-event-name').addEventListener('keydown',e=>{ if(e.key==='Enter') createEvent(); });
+document.getElementById('rename-input').addEventListener('keydown',e=>{ if(e.key==='Enter') confirmRename(); });
+document.getElementById('new-person-input').addEventListener('keydown',e=>{ if(e.key==='Enter') addPerson(); });
 
-// ── INIT ──
-load();
-populateOwnerDrops();
-renderAll();
-setupKeys();
+// ── START ──
+init();
 </script>
 </body>
 </html>
